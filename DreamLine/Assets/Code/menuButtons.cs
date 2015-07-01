@@ -10,7 +10,7 @@ public class menuButtons : MonoBehaviour {
 	void Start () 
 	{
 		start = GameObject.Find("startButton");
-		exit = GameObject.Find("endButton");
+		exit = GameObject.Find("exitButton");
 	}
 	
 	// Update is called once per frame

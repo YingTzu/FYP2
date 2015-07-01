@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\PlayerMovement.cs" />
      <Compile Include="Assets\Code\Potions.cs" />
+     <Compile Include="Assets\Code\cameraInit.cs" />
      <Compile Include="Assets\Code\exitGame.cs" />
      <Compile Include="Assets\Code\menuButtons.cs" />
   </ItemGroup>
