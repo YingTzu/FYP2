@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\GameEngineAssignment\Cunning Pigs\Assets\Script\ButtonScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\PlayerMovement.cs">
     <Files>
-      <File FileName="..\..\GameEngineAssignment\Cunning Pigs\Assets\Script\createWalls.cs" Line="35" Column="39" />
-      <File FileName="..\..\GameEngineAssignment\Cunning Pigs\Assets\Script\ButtonScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\PlayerMovement.cs" Line="23" Column="51" />
+      <File FileName="Assets\Code\Potions.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
