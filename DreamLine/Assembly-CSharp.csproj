@@ -46,12 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\Obstacles.cs" />
      <Compile Include="Assets\Code\PlayerMovement.cs" />
      <Compile Include="Assets\Code\Potions.cs" />
      <Compile Include="Assets\Code\backgroundScrolling.cs" />
      <Compile Include="Assets\Code\cameraInit.cs" />
+     <Compile Include="Assets\Code\cloudScript.cs" />
      <Compile Include="Assets\Code\exitGame.cs" />
+     <Compile Include="Assets\Code\followCamera.cs" />
+     <Compile Include="Assets\Code\generateMaps.cs" />
      <Compile Include="Assets\Code\menuButtons.cs" />
+     <Compile Include="Assets\Code\playerControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
