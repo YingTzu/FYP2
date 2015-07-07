@@ -38,5 +38,10 @@ public class playerControl : MonoBehaviour {
 			live -= 1;
 			//Destroy(coll.gameObject);
 		}
+		if (coll.gameObject.tag == "obstacles")
+		{
+			live -= 1;
+			Destroy(coll.gameObject);
+		}
 	}
 }
