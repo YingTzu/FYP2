@@ -14,10 +14,9 @@ public class Potions : MonoBehaviour {
 	private bool isInvisible;
 	private bool isTiming = false;
 
-	// Use this for initialization
 	void Start () {
 		playerSpeed = playerControl.movementSpeed;
-		//debug.text = "speed"+playerSpeed;
+
 		p1p1 = GameObject.Find("player1Potion1");
 		p1p2 = GameObject.Find("player1Potion2");
 		p1p3 = GameObject.Find("player1Potion3");
@@ -40,48 +39,30 @@ public class Potions : MonoBehaviour {
 		{
 			foreach (Touch touch in Input.touches)
 			{
-				if(p1p1 == true)
+				if (p1p1.GetComponent<GUITexture>().HitTest(touch.position) == true)
 				{
-					if (p1p1.GetComponent<GUITexture>().HitTest(touch.position) == true)
-					{
-						checkPotion();
-					}
+					checkPotion();
 				}
-				if(p1p2 == true)
+				else if (p1p2.GetComponent<GUITexture>().HitTest(touch.position) == true)
 				{
-					if (p1p2.GetComponent<GUITexture>().HitTest(touch.position) == true)
-					{
-						checkPotion();
-					}
+					checkPotion();
 				}
-				if(p1p3 == true)
+				else if (p1p3.GetComponent<GUITexture>().HitTest(touch.position) == true)
 				{
-					if (p1p3.GetComponent<GUITexture>().HitTest(touch.position) == true)
-					{
-						checkPotion();
-					}
+					checkPotion();
 				}
-				
-				if(p2p1 == true)
+
+				if (p1p1.GetComponent<GUITexture>().HitTest(touch.position) == true)
 				{
-					if (p1p1.GetComponent<GUITexture>().HitTest(touch.position) == true)
-					{
-						checkPotion();
-					}
+					checkPotion();
 				}
-				if(p2p2 == true)
+				else if (p1p2.GetComponent<GUITexture>().HitTest(touch.position) == true)
 				{
-					if (p1p2.GetComponent<GUITexture>().HitTest(touch.position) == true)
-					{
-						checkPotion();
-					}
+					checkPotion();
 				}
-				if(p2p3 == true)
+				else if (p1p3.GetComponent<GUITexture>().HitTest(touch.position) == true)
 				{
-					if (p1p3.GetComponent<GUITexture>().HitTest(touch.position) == true)
-					{
-						checkPotion();
-					}
+					checkPotion();
 				}
 			}
 		}
@@ -89,22 +70,20 @@ public class Potions : MonoBehaviour {
 
 	void checkPotion()
 	{
+		isTiming = true;
 		if (GameObject.FindWithTag ("Invisible")) 
 		{
-			isTiming = true;
+			debug.text = "invisible";
 		}
-			//debug.text = "invisible";
 		else if(GameObject.FindWithTag("health"))
 		{
-			isTiming = true;
-			//debug.text = "hearth++";
+			debug.text = "hearth";
 		}
 		else if (GameObject.FindWithTag ("speedUp")) 
 		{
-			isTiming = true;
-			//debug.text = "speed"+playerSpeed;
-			playerSpeed = 5.0f;
-			playerControl.movementSpeed = playerSpeed;
+			debug.text = "speed"+playerSpeed;
+			//playerSpeed = 5.0f;
+			//playerControl.movementSpeed = playerSpeed;
 		}
 	}
 
