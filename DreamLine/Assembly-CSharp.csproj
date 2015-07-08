@@ -49,6 +49,7 @@
      <Compile Include="Assets\Script\Obstacles.cs" />
      <Compile Include="Assets\Script\PlayerMovement.cs" />
      <Compile Include="Assets\Script\Potions.cs" />
+     <Compile Include="Assets\Script\aeroplaneScript.cs" />
      <Compile Include="Assets\Script\backgroundScrolling.cs" />
      <Compile Include="Assets\Script\cameraInit.cs" />
      <Compile Include="Assets\Script\cloudScript.cs" />
