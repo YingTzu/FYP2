@@ -19,7 +19,7 @@ public class Score : MonoBehaviour {
 		}
 		else{
 			distance++;
-			this.gameObject.guiText.text = "Scroe: " + distance;
+			this.gameObject.guiText.text = "Score: " + distance;
 		}
 	}
 }

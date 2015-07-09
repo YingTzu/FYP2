@@ -16,26 +16,24 @@ public class aeroplaneScript : MonoBehaviour {
 	private float destroyTime = 2.0f;
 	private float distanceBetween;
 	
-	private GameObject Cam;
-	
 	// Use this for initialization
 	void Start () {
 		
 		timeUntilNextToggle = interval;
 		
 		warningSign = GameObject.Find ("DANGER");
-		Cam = GameObject.Find ("Main Camera");
 		
 		distanceBetween = this.gameObject.transform.position.x - warningSign.transform.position.x;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 newVelocity = rigidbody2D.velocity;
+		Vector2 newVelocity = rigidbody2D.velocity; 
 		newVelocity.x = movementSpeed;
 		rigidbody2D.velocity = newVelocity;
-		
+
 		displayDanger ();
+				
 		
 	}
 	
@@ -67,5 +65,11 @@ public class aeroplaneScript : MonoBehaviour {
 		}
 		
 	}
-	
+	void OnCollisionEnter2D(Collision2D coll) 
+	{
+		if (coll.gameObject.name == "Clouds") 
+		{
+			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+		}
+	}
 }

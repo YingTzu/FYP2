@@ -4,10 +4,22 @@ using System.Collections.Generic;
 
 public class generateMaps : MonoBehaviour {
 
+	// for maps
 	public GameObject[] availableMaps;
-	public List<GameObject> currentMap;
+
+	public GameObject[] availableObjects;
 
 	private float screenWidthInPoints;
+
+	// for objects
+	public List<GameObject> currentMap;
+	public List<GameObject> objects;
+	
+	public float objectsMinDistance = 5.0f;    
+	public float objectsMaxDistance = 10.0f;
+	
+	public float objectsMinY = -1.4f;
+	public float objectsMaxY = 1.4f;
 
 	// Use this for initialization
 	void Start () 
@@ -25,6 +37,7 @@ public class generateMaps : MonoBehaviour {
 	void FixedUpdate()
 	{
 		GenerateMapIfRequired ();
+		GenerateObjectsIfRequired ();
 	}
 
 	void AddMap(float furthestMapEndX)
@@ -87,4 +100,47 @@ public class generateMaps : MonoBehaviour {
 			AddMap (furthestMapEndX);
 		}
 	}
+
+	void AddObject(float lastObjectX)
+	{
+		int randomIndex = Random.Range(0,availableObjects.Length);
+
+		GameObject obj = (GameObject)Instantiate(availableObjects[randomIndex]);
+
+		float objectPositionX = lastObjectX + Random.Range(objectsMinDistance, objectsMaxDistance);
+		float randomY = Random.Range(objectsMinY, objectsMaxY);
+		obj.transform.position = new Vector3(objectPositionX,randomY,0); 
+
+		objects.Add(obj);
+	}
+
+	void GenerateObjectsIfRequired()
+	{
+		float playerX = transform.position.x;        
+		float removeObjectsX = playerX - screenWidthInPoints;
+		float addObjectX = playerX + screenWidthInPoints;
+		float furthestObjectX = 0;
+
+		List<GameObject> objectsToRemove = new List<GameObject>();
+		
+		foreach (var obj in objects)
+		{
+			float objX = obj.transform.position.x;
+
+			furthestObjectX = Mathf.Max(furthestObjectX, objX);
+
+			if (objX < removeObjectsX)            
+				objectsToRemove.Add(obj);
+		}
+
+		foreach (var obj in objectsToRemove)
+		{
+			objects.Remove(obj);
+			Destroy(obj);
+		}
+
+		if (furthestObjectX < addObjectX)
+			AddObject(furthestObjectX);
+	}
+
 }
