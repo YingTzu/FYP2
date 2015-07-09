@@ -3,13 +3,15 @@ using System.Collections;
 
 public class playerControl : MonoBehaviour {
 
-	public static float movementSpeed = 3.0f;
-	public static int life = 3;
+	public static float movementSpeed ;
+	public static int life;
 	public GUITexture heart;
-
+	public GUIText displayLife;
 	public GUIText debug;
 	
 	void Start () {
+		life = 3;
+		movementSpeed = 3.0f;
 	}
 
 	void Update () {
@@ -17,11 +19,14 @@ public class playerControl : MonoBehaviour {
 		newVelocity.x = movementSpeed;
 		rigidbody2D.velocity = newVelocity;
 
+		displayLife.text = "x" + life;;
 		if (life <= 0)
 		{
 			Destroy (heart);
+			Destroy(displayLife);
 			life = 0;
 			movementSpeed = 0;
+			Application.LoadLevel(2);
 		}
 	}
 
