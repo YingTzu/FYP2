@@ -14,26 +14,30 @@ public class PotionManager : MonoBehaviour {
 
 	public Image Heart;
 
+	public int type;
+	public float spawnTime;
+	public float powerUpTime;
+
 	public bool isHeal;
 	public bool isSpeedUp;
 	public bool isInvisible;
+	public bool isTiming;
 
 	void Start () {
 		isHeal = false;
 		isSpeedUp = false;
 		isInvisible = false;
-
+		type = 1;
+		spawnTime = 10;
+		powerUpTime = 3;
 		healUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
 		speedUpUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
 		invisibleUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
-
-		p1Clone = Instantiate(p1, transform.position, Quaternion.identity)as GameObject;
-		p2Clone = Instantiate(p2, transform.position, Quaternion.identity)as GameObject;
-		p3Clone = Instantiate(p3, transform.position, Quaternion.identity)as GameObject;
 	}
 
 	void Update () {
 		TouchPotions ();
+		spawnPotions ();
 	}
 
 	void TouchPotions()
@@ -76,6 +80,19 @@ public class PotionManager : MonoBehaviour {
 		}
 	}
 
+	void beginTimer()
+	{
+		if(isTiming)
+		{
+			powerUpTime -= Time.deltaTime;
+		}
+		if(powerUpTime <= 0)
+		{
+			isTiming = false;
+			powerUpTime = 10;
+		}
+	}
+
 	public void heal()
 	{
 		if(isHeal == true)
@@ -106,9 +123,35 @@ public class PotionManager : MonoBehaviour {
 		isInvisible = false;
 	}
 
+	void spawnPotions()
+	{
+		spawnTime -= Time.deltaTime;
 
-//	void spawnPotions()
-//	{
-//
-//	}
+		if (spawnTime <= 0) 
+		{
+			spawnTime = 10;
+			type = Random.Range (1, 4);
+			potionType();
+		}
+	}
+
+	void potionType()
+	{
+		float x = Random.Range (0.5f, 1f);
+		float y = Random.Range (0.1f, 0.5f);
+		Vector3 pos = new Vector3 (x, y, 10);
+		pos = Camera.main.ViewportToWorldPoint (pos);
+		switch(type)
+		{
+			case 1:
+				p1Clone = Instantiate(p1, pos, Quaternion.identity)as GameObject;
+				break;
+			case 2:
+				p2Clone = Instantiate(p2, pos, Quaternion.identity)as GameObject;
+				break;
+			case 3:
+				p3Clone = Instantiate(p3, pos, Quaternion.identity)as GameObject;
+				break;
+		}
+	}
 }
