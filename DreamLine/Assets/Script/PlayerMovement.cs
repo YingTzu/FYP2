@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Start () 
 	{
-		playerSpeed = playerControl.movementSpeed;
 		Up = 2f;
 		Gravity = -1f;
 		checkMode();
@@ -25,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update () 
 	{
+		playerSpeed = playerControl.movementSpeed;
 		player.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, Gravity);
 		Touch();
 	}
@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
 			if(single == true)
 			{
 				player.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, Up);
-				//player.GetComponent<Rigidbody2D>().velocity = Vector2.up * Up;
 			}
 
 			if(twoPlayer == true)

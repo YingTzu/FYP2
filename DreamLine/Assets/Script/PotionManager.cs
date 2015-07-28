@@ -3,35 +3,40 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PotionManager : MonoBehaviour {
-
-	public GameObject screenCanves;
+	
 	public GameObject p1, p2, p3;
 	public GameObject p1Clone, p2Clone, p3Clone;
+	public GameObject player;
 
 	public Button healUI;
 	public Button speedUpUI;
 	public Button invisibleUI;
 
 	public Image Heart;
-
-	//private int life;
+	
 	public int type;
 	public float spawnTime;
 	public float powerUpTime;
 
+	private float playerSpeed;
+	
 	public bool isHeal;
 	public bool isSpeedUp;
 	public bool isInvisible;
 	public bool isTiming;
 
-	void Start () {
-		//life = playerControl.life;
+	void Start () 
+	{
 		isHeal = false;
 		isSpeedUp = false;
 		isInvisible = false;
+
 		type = 1;
-		spawnTime = 10;
-		powerUpTime = 3;
+		spawnTime = 15;
+		powerUpTime = 5;
+
+		playerSpeed = playerControl.movementSpeed;
+
 		healUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
 		speedUpUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
 		invisibleUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
@@ -40,11 +45,44 @@ public class PotionManager : MonoBehaviour {
 	void Update () {
 		TouchPotions ();
 		spawnPotions ();
+		beginTimer ();
+	}
+
+	void spawnPotions()
+	{
+		spawnTime -= Time.deltaTime;
+		
+		if (spawnTime <= 0) 
+		{
+			spawnTime = 15;
+			type = Random.Range (2, 3);
+			potionType();
+		}
+	}
+
+	void potionType() //random spawn potion
+	{
+		float x = Random.Range (0.5f, 1f);
+		float y = Random.Range (0.1f, 0.5f);
+		Vector3 pos = new Vector3 (x, y, 10);
+		pos = Camera.main.ViewportToWorldPoint (pos);
+		switch(type)
+		{
+		case 1:
+			p1Clone = Instantiate(p1, pos, Quaternion.identity)as GameObject;
+			break;
+		case 2:
+			p2Clone = Instantiate(p2, pos, Quaternion.identity)as GameObject;
+			break;
+		case 3:
+			p3Clone = Instantiate(p3, pos, Quaternion.identity)as GameObject;
+			break;
+		}
 	}
 
 	void TouchPotions()
 	{
-		//do a check when only potion appears;
+		//check potion touch
 		if (Input.touchCount == 1)
 		{
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
@@ -82,6 +120,37 @@ public class PotionManager : MonoBehaviour {
 		}
 	}
 
+	public void heal()
+	{
+		if(isHeal == true)
+		{
+			Heart.fillAmount += 1.0f/3.0f;
+			healUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
+			isHeal = false;
+		}
+	}
+
+	public void speedUp()
+	{
+		if(isSpeedUp == true)
+		{
+			isTiming = true;
+			playerSpeed = 6.0f;
+			playerControl.movementSpeed = playerSpeed;
+			speedUpUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
+		}
+	}
+
+	public void invisible()
+	{
+		if(isInvisible == true)
+		{
+			isTiming = true;
+			player.GetComponent<BoxCollider2D>().isTrigger = true;
+			invisibleUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
+		}
+	}
+
 	void beginTimer()
 	{
 		if(isTiming)
@@ -91,71 +160,12 @@ public class PotionManager : MonoBehaviour {
 		if(powerUpTime <= 0)
 		{
 			isTiming = false;
-			powerUpTime = 10;
-		}
-	}
-
-	public void heal()
-	{
-		if(isHeal == true)
-		{
-			Heart.fillAmount += 1.0f/3.0f;
-			//life += 1;
-			//playerControl.life = life;
-			healUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
-		}
-		isHeal = false;
-	}
-
-	public void speedUp()
-	{
-		if(isSpeedUp == true)
-		{
-			//player speed increase
-			speedUpUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
-		}
-		isSpeedUp = false;
-	}
-
-	public void invisible()
-	{
-		if(isInvisible == true)
-		{
-			//player no collision
-			invisibleUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
-		}
-		isInvisible = false;
-	}
-
-	void spawnPotions()
-	{
-		spawnTime -= Time.deltaTime;
-
-		if (spawnTime <= 0) 
-		{
-			spawnTime = 10;
-			type = Random.Range (1, 4);
-			potionType();
-		}
-	}
-
-	void potionType()
-	{
-		float x = Random.Range (0.5f, 1f);
-		float y = Random.Range (0.1f, 0.5f);
-		Vector3 pos = new Vector3 (x, y, 10);
-		pos = Camera.main.ViewportToWorldPoint (pos);
-		switch(type)
-		{
-			case 1:
-				p1Clone = Instantiate(p1, pos, Quaternion.identity)as GameObject;
-				break;
-			case 2:
-				p2Clone = Instantiate(p2, pos, Quaternion.identity)as GameObject;
-				break;
-			case 3:
-				p3Clone = Instantiate(p3, pos, Quaternion.identity)as GameObject;
-				break;
+			isSpeedUp = false;
+			isInvisible = false;
+			powerUpTime = 5;
+			playerSpeed = 3.0f;
+			playerControl.movementSpeed = playerSpeed;
+			player.GetComponent<BoxCollider2D>().isTrigger = false;
 		}
 	}
 }
