@@ -32,6 +32,7 @@ public class PotionManager : MonoBehaviour {
 		isInvisible = false;
 
 		type = 1;
+
 		spawnTime = 15;
 		powerUpTime = 5;
 
@@ -55,7 +56,7 @@ public class PotionManager : MonoBehaviour {
 		if (spawnTime <= 0) 
 		{
 			spawnTime = 15;
-			type = Random.Range (2, 3);
+			type = Random.Range (1, 4);
 			potionType();
 		}
 	}
@@ -147,6 +148,7 @@ public class PotionManager : MonoBehaviour {
 		{
 			isTiming = true;
 			player.GetComponent<BoxCollider2D>().isTrigger = true;
+			player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
 			invisibleUI.GetComponent<CanvasRenderer>().SetAlpha(0.3f);
 		}
 	}
@@ -162,9 +164,11 @@ public class PotionManager : MonoBehaviour {
 			isTiming = false;
 			isSpeedUp = false;
 			isInvisible = false;
+
 			powerUpTime = 5;
 			playerSpeed = 3.0f;
 			playerControl.movementSpeed = playerSpeed;
+			player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
 			player.GetComponent<BoxCollider2D>().isTrigger = false;
 		}
 	}

@@ -5,7 +5,6 @@ using System.Collections;
 public class playerControl : MonoBehaviour {
 
 	public static float movementSpeed;
-	public GUIText debug;
 	public Image Heart;
 	
 	void Start ()
@@ -18,6 +17,11 @@ public class playerControl : MonoBehaviour {
 	{
 		Vector2 tempV = new Vector2 (movementSpeed, 0);
 		this.GetComponent<Rigidbody2D>().velocity = tempV;
+
+		//player's higest limit
+		Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+		pos.y = Mathf.Clamp(pos.y, -0.1f, 0.78f);
+		this.gameObject.transform.position = Camera.main.ViewportToWorldPoint(pos);
 
 		if(Heart.fillAmount == 0)
 		{

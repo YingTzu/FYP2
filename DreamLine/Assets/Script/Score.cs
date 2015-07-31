@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Score : MonoBehaviour 
 {
-	public int distance;
+	public static int distance;
 	public int latestDistance;
 	public Image Heart;
 	void Start () {

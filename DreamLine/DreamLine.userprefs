@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\MonominoLatest\Assets\Scripts\MMManagers\MMUIManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\playerControl.cs">
     <Files>
-      <File FileName="..\MonominoLatest\Assets\Scripts\MMManagers\MMUIManager.cs" Line="597" Column="1" />
+      <File FileName="Assets\Script\PotionManager.cs" Line="136" Column="24" />
+      <File FileName="Assets\Script\playerControl.cs" Line="21" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

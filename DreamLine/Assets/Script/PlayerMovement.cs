@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
 	public float Gravity;
 	private float playerSpeed;
 
-	public GUIText debug;
-
 	public GameObject player;
 	public GameObject player2;
 	public bool single, twoPlayer, fourthPlayer;
