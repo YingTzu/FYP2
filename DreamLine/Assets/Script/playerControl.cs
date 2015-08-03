@@ -7,10 +7,12 @@ public class playerControl : MonoBehaviour
 	public Image Heart;
 	public Image Heart2;
 
-	public AudioClip[] SFXclip;
+	private GameObject SFXAudio;
 
 	void Start ()
 	{
+		SFXAudio = GameObject.Find ("SFXaudio");
+
 		Heart.fillAmount = 1;
 		if(Application.loadedLevelName == "TwoPlayer")
 			Heart2.fillAmount = 1;
@@ -74,7 +76,7 @@ public class playerControl : MonoBehaviour
 		}
 		if (coll.gameObject.tag == "obstacles")
 		{
-			PlaySound(0);
+			SFXAudio.GetComponent<SFXmanager>().playGameEffects(0);
 
 			Heart.fillAmount -= 1.0f/3.0f;
 			if(Application.loadedLevelName == "TwoPlayer")
@@ -84,9 +86,5 @@ public class playerControl : MonoBehaviour
 		}
 	}
 
-	void PlaySound(int clip)
-	{
-		GetComponent<AudioSource> ().clip = SFXclip [clip];
-		GetComponent<AudioSource> ().Play ();
-	} 
+
 }

@@ -15,11 +15,15 @@ public class Buttons : MonoBehaviour
 	private GameObject BGMusic;
 	private GameObject SFXeffects;
 
+	private GameObject SFXAudio;
+
 
 	void Start () 
 	{
 		BGMusic = GameObject.Find ("BGM");
 		SFXeffects = GameObject.Find ("SFX");
+		
+		SFXAudio = GameObject.Find ("SFXaudio");
 
 		optionAppear = false;
 		backButtonAppear = false;
@@ -42,7 +46,8 @@ public class Buttons : MonoBehaviour
 	{
 		if(optionAppear == false && backButtonAppear == false)
 		{
-			GetComponent<AudioSource> ().Play ();
+			//GetComponent<AudioSource> ().Play ();
+			SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
 			Application.LoadLevel(1);
 
 		}
@@ -50,7 +55,8 @@ public class Buttons : MonoBehaviour
 
 	public void loadMenu()
 	{
-		GetComponent<AudioSource> ().Play ();
+		//GetComponent<AudioSource> ().Play ();
+		SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
 		Application.LoadLevel (0);
 	}
 
@@ -61,13 +67,16 @@ public class Buttons : MonoBehaviour
 			optionsPage.enabled = true;
 			optionsBack.enabled = true;
 			optionsBackButton.enabled = true;
-			GetComponent<AudioSource> ().Play ();
+			//GetComponent<AudioSource> ().Play ();
+			SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
 			optionsPage.GetComponent<CanvasRenderer>().SetAlpha(0.9f);
 			optionAppear = true;
 			backButtonAppear = true;
 
 			BGMusic.SetActive(true);
 			SFXeffects.SetActive(true);
+
+
 		}
 
 		else if (optionAppear == true)
@@ -95,7 +104,8 @@ public class Buttons : MonoBehaviour
 		BGMusic.SetActive(false);
 		SFXeffects.SetActive(false);
 
-		GetComponent<AudioSource> ().Play ();
+		//GetComponent<AudioSource> ().Play ();
+		SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
 	}
 
 }

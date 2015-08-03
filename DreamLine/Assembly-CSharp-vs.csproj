@@ -50,8 +50,10 @@
      <Compile Include="Assets\Script\Obstacles.cs" />
      <Compile Include="Assets\Script\PlayerMovement.cs" />
      <Compile Include="Assets\Script\PotionManager.cs" />
+     <Compile Include="Assets\Script\SFXmanager.cs" />
      <Compile Include="Assets\Script\Score.cs" />
      <Compile Include="Assets\Script\aeroplaneScript.cs" />
+     <Compile Include="Assets\Script\audioManager.cs" />
      <Compile Include="Assets\Script\backgroundScrolling.cs" />
      <Compile Include="Assets\Script\cloudScript.cs" />
      <Compile Include="Assets\Script\followCamera.cs" />
