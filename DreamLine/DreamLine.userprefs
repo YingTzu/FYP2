@@ -1,10 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\PotionManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\playerControl.cs">
     <Files>
-      <File FileName="Assets\Script\playerControl.cs" Line="32" Column="4" />
-      <File FileName="Assets\Script\audioManager.cs" Line="85" Column="3" />
-      <File FileName="Assets\Script\PotionManager.cs" Line="143" Column="1" />
+      <File FileName="Assets\Script\playerControl.cs" Line="63" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
