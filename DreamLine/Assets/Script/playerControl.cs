@@ -33,7 +33,7 @@ public class playerControl : MonoBehaviour
 			if(Heart.fillAmount == 0)
 			{
 				PlayerMovement.playerSpeed = 0;
-				Application.LoadLevel(2);
+				Application.LoadLevel("Gameover");
 			}
 		}
 
@@ -56,11 +56,11 @@ public class playerControl : MonoBehaviour
 
 			if(Heart.fillAmount == 0)
 			{
-				//player 2 win
+				Application.LoadLevel("Player2Win");
 			}
 			if(Heart2.fillAmount == 0)
 			{
-				//player 1 win
+				Application.LoadLevel("Player1Win");
 			}
 		}
 	}

@@ -46,7 +46,7 @@ public class PotionManager : MonoBehaviour {
 	
 		type = 1;
 
-		spawnTime = 5;
+		spawnTime = 15;
 		powerUpTime = 5;
 
 		playerSpeed = PlayerMovement.playerSpeed;
@@ -77,7 +77,7 @@ public class PotionManager : MonoBehaviour {
 		
 		if (spawnTime <= 0) 
 		{
-			spawnTime = 5;
+			spawnTime = 15;
 			type = Random.Range (1, 4);
 			potionType();
 		}

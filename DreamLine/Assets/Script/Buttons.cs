@@ -48,16 +48,27 @@ public class Buttons : MonoBehaviour
 		{
 			//GetComponent<AudioSource> ().Play ();
 			SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
-			Application.LoadLevel(1);
-
+			Application.LoadLevel("ModeSelect");
 		}
+	}
+
+	public void singlePlayer()
+	{
+		SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
+		Application.LoadLevel("Endless");
+	}
+
+	public void twoPlayer()
+	{
+		SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
+		Application.LoadLevel("TwoPlayer");
 	}
 
 	public void loadMenu()
 	{
 		//GetComponent<AudioSource> ().Play ();
 		SFXAudio.GetComponent<SFXmanager>().playMenuEffects(0);
-		Application.LoadLevel (0);
+		Application.LoadLevel ("Menu");
 	}
 
 	public void optionsPageOut()
@@ -75,8 +86,6 @@ public class Buttons : MonoBehaviour
 
 			BGMusic.SetActive(true);
 			SFXeffects.SetActive(true);
-
-
 		}
 
 		else if (optionAppear == true)
@@ -89,7 +98,6 @@ public class Buttons : MonoBehaviour
 
 			BGMusic.SetActive(false);
 			SFXeffects.SetActive(false);
-
 		}
 	}
 
