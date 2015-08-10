@@ -78,9 +78,18 @@ public class playerControl : MonoBehaviour
 		{
 			SFXAudio.GetComponent<SFXmanager>().playGameEffects(0);
 
-			Heart.fillAmount -= 1.0f/3.0f;
+			if(Application.loadedLevelName == "Endless")
+			{
+				Heart.fillAmount -= 1.0f/3.0f;
+			}
+
 			if(Application.loadedLevelName == "TwoPlayer")
-				Heart2.fillAmount -= 1.0f/3.0f;
+			{
+				if(this.gameObject.name == "player")
+					Heart.fillAmount -= 1.0f/3.0f;
+				if(this.gameObject.name == "player2")
+					Heart2.fillAmount -= 1.0f/3.0f;
+			}
 
 			Destroy(coll.gameObject);
 		}
