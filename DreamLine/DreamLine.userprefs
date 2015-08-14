@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Cunning Pigs\Assets\Script\PlayerMovement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\playerControl.cs">
     <Files>
-      <File FileName="..\..\Cunning Pigs\Assets\Script\PlayerMovement.cs" Line="25" Column="25" />
-      <File FileName="..\..\Cunning Pigs\Assets\Script\InputContorller.cs" Line="10" Column="28" />
+      <File FileName="Assets\Script\PotionManager.cs" Line="142" Column="3" />
+      <File FileName="Assets\Script\SFXmanager.cs" Line="8" Column="46" />
+      <File FileName="Assets\Script\aeroplaneScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\playerControl.cs" Line="85" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

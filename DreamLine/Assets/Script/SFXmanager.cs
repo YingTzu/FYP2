@@ -7,8 +7,6 @@ public class SFXmanager : MonoBehaviour {
 	
 	public AudioClip[] menuSFXlist, gameSFXlist;
 
-	private bool soundPlaying = false;
-
 	void Awake()
 	{
 		if(instance)

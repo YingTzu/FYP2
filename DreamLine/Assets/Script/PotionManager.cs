@@ -139,9 +139,7 @@ public class PotionManager : MonoBehaviour {
 	}
 
 	void TouchPotions()
-	{
-		Touch[] myTouches = Input.touches;
-		
+	{	
 		for(int i = 0; i < Input.touchCount; i++)
 		{
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
